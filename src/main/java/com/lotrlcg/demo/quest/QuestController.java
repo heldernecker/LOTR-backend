@@ -35,12 +35,12 @@ public class QuestController {
 	}
 	
 	@PutMapping("/update")
-	public Quest updateQuest(Quest quest) {
+	public Quest updateQuest(@RequestBody Quest quest) {
 		return questService.updateQuest(quest);
 	}
 	
-	@DeleteMapping("/delete")
-	public String deleteQuest(long id) {
+	@DeleteMapping("/delete/{id}")
+	public String deleteQuest(@PathVariable long id) {
 		return questService.deleteQuest(id);
 	}
 

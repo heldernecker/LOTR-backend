@@ -1,6 +1,4 @@
-package com.lotrlcg.demo.hero;
-
-
+package com.lotrlcg.demo.score;
 
 import java.util.List;
 
@@ -15,36 +13,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/hero")
-public class HeroController {
+@RequestMapping("/api/score")
+public class ScoreController {
 	
 	@Autowired
-	private HeroService heroService;
+	private ScoreService scoreService;
 	
-	@PostMapping("/add")
-	public Hero addHero(@RequestBody Hero hero) {
-		return heroService.addHero(hero);
+	@GetMapping("/get")
+	public List<Score> getScores() {
+		return scoreService.getScores();
 	}
 	
 	@GetMapping("/get/{id}")
-	public Hero getHeroById(@PathVariable long id) {
-		return heroService.findHeroById(id);
+	public Score getScoreById(@PathVariable long id) {
+		return scoreService.getScoreById(id);
 	}
 	
-	@GetMapping("/get")
-	public List<Hero> getHeroes() {
-		return heroService.getHeroes();
-	}
-	
-	@PutMapping("/update")
-	public Hero updateHero(@RequestBody Hero hero) {
-		return heroService.updateHero(hero);
+	@PostMapping("/add")
+	public Score addScore(@RequestBody Score score) {
+		return scoreService.addScore(score);
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	public String deleteHero(@PathVariable long id) {
-		return heroService.deleteHero(id);
+	public String deleteScore(@PathVariable long id) {
+		return scoreService.deleteScore(id);
 	}
 	
+	@PutMapping("/update")
+	public Score updateScore(@RequestBody Score score) {
+		return scoreService.updateScore(score);
+	}
 
 }
